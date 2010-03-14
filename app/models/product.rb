@@ -23,6 +23,12 @@ class Product < ActiveRecord::Base
     "#{title} [eisbn: #{eisbn.gsub(/-/, '')}]"
   end
 
+  def to_param
+    @__to_param = nil if title_changed? # clear the cached value if title has changed
+    @__to_param ||= begin               # read cached value or recalculate slug
+      "#{id}-#{title.gsub(/[^a-z0-9]+/i, '-')}".squeeze('-')[0..19]
+    end
+  end
   
   
 end

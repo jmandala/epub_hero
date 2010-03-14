@@ -23,7 +23,10 @@ class ProductTest < ActiveSupport::TestCase
     should 'have a sane to_s' do
       assert_equal "The Art of War [eisbn: 9781234567890]", @product.to_s
     end
-    
+
+    should 'have a sane to_param' do
+      assert_equal "#{@product.id}-The-Art-of-War", @product.to_param
+    end
     
   end
     
