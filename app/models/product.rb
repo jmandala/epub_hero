@@ -10,4 +10,8 @@ class Product < ActiveRecord::Base
   
   validates_uniqueness_of :print_isbn, :eisbn
   
+  def to_s
+    "#{title} [eisbn: #{eisbn.gsub(/-/, '')}]"
+  end
+  
 end

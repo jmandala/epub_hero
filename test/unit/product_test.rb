@@ -4,8 +4,9 @@ class ProductTest < ActiveSupport::TestCase
 
   context 'a product' do
     setup do
-      @product = Factory(:product)
-      
+      @product = Factory(:product, 
+                  :title => "The Art of War", 
+                  :eisbn => "978-1234-56789-0")
     end
     
     subject { @product }
@@ -17,6 +18,11 @@ class ProductTest < ActiveSupport::TestCase
     should_ensure_length_in_range :eisbn, 13..20
     should_allow_values_for :complexity, *Product::COMPLEXITIES
     should_not_allow_values_for :complexity, %{foo bar baz}
+
+    should 'have a sane to_s' do
+      assert_equal "The Art of War [eisbn: 9781234567890]", @product.to_s
+    end
+    
     
   end
     
