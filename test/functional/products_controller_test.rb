@@ -11,8 +11,27 @@ class ProductsControllerTest < ActionController::TestCase
     should_respond_with :success
     should_assign_to(:products) { [@product]}
     should_render_template :index
-    should_not_set_the_flash
   end
+  
+  context 'A GET to Products#new' do
+    setup {get :new}
+    should_respond_with :success
+    should "assign a new Product to :product" do
+      p = assigns(:product)
+      assert p.present?
+      assert p.kind_of?(Product)
+      assert p.new_record?
+    end
+    should_render_template :new
+  end
+  
+  context 'A GET to Products#show' do
+    setup {get :show, :id => @product.to_param}
+    should_respond_with :success
+    should_assign_to(:product) { @product}
+    should_render_template :new
+  end
+  
   
   context 'a POST to Products#create with all required attributes' do
     setup { post :create, :product  => Factory.attributes_for(:product) }
