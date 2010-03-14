@@ -10,3 +10,4 @@ config/database.yml
 public/javascripts/all.js
 public/stylesheets/all.css
 public/system
+test/fixtures/*.yml
