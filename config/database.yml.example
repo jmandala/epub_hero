@@ -1,0 +1,26 @@
+sqlite3: &SQLITE
+  adapter: sqlite3
+  pool: 5
+  timeout: 5000
+
+mysql: &MYSQL
+  adapter: mysql
+  encoding: utf8
+  host: localhost
+  pool: 5  
+  reconnect: false
+  socket: /var/run/mysqld/mysqld.sock
+
+development:
+  <<: *SQLITE
+  database: db/dev.sqlite3
+
+test:
+  <<: *SQLITE
+  database: db/test.sqlite3
+
+production:
+  <<: *MYSQL
+  database: epubhero_production
+  username: deploy
+  password: 
