@@ -1,2 +1,8 @@
-%h1 Products#show
-%p Find me in app/views/products/show.html.erb
+%h1.title= @product.title
+%h2.subtitle= @product.subtitle
+
+#product-details
+  .eisbn= "eIsbn: #{@product.eisbn}"
+  .print_isbn= "Derived from: #{@product.print_isbn}"
+  .complexity= "How complex is this title? #{@product.complexity}"
+

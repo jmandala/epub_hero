@@ -1,4 +1,6 @@
-%h1 Products#index
+%h1 All Titles
 
-.buttons
-	#new= link_to "New Title", :action => :new
+#view-titles
+  - @products.each do |p|
+    .product
+      = link_to "#{p.title} (#{p.eisbn})", p
