@@ -52,6 +52,28 @@ class ProductsControllerTest < ActionController::TestCase
     should_set_the_flash_to /created/i
   end
 
+  
+  context 'a POST to Products#create with string value for complexities' do
+    setup do
+      @product = Factory(:product)
+      @product.complexity = Product::COMPLEXITITES::ALL.first.to_s
+      Product.stubs(:new).returns(@product)
+      post :create, :product  => { :anything => 'here' }
+    end
+    should_assign_to :product
+    should "assign a valid Product to :product" do
+      p = assigns(:product)
+      assert p.present?
+      assert p.kind_of?(Product)
+      assert p.valid?
+      assert !p.new_record?
+    end
+    should_redirect_to('Products#show') { product_path(@product) }
+    should_change("the number of Products", :by => 1) { Product.count }
+    should_set_the_flash_to /created/i
+  end
+
+
   context 'a POST to Products#create with invalid attributes' do
     setup { post :create, :product => Factory.attributes_for(:product, :eisbn => nil) }
     should_render_template :new
