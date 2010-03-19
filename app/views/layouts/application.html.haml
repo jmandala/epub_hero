@@ -11,6 +11,11 @@
       #content
         .site
           #page
+            %ul.actions
+              %li.all
+                = link_to("<span>all titles</span>", products_path, :id => "all-button", :class => 'mini-button')
+              %li.new
+                = link_to("<span>new title</span>", {:controller => :products, :action => :new}, :id => 'new-button', :class => 'mini-button')
             = yield
       #footer
         #copyright &copy; #{Time.now.year} Mandala Designs LLC
