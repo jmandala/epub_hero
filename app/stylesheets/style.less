@@ -1,0 +1,94 @@
+@page-width: 920px;
+.page {
+  width: @page-width;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  color: black;
+  height: 100%;
+}
+
+body * {
+  line-height: 1.4em;
+}
+
+body {
+  background-color: white;
+  font: 13.34px helvetica,arial,freesans,clean,sans-serif;
+  text-align: center;
+}
+
+#main {
+  height: auto !important;
+  margin: 0 auto -8.6em;
+  min-height: 100%;
+}
+
+#header {
+  background:url("/images/header/header_bg.gif") repeat-x scroll 0 100% #FCFCFC;
+  height: 115px;
+  margin-bottom: 0;
+}
+
+#header .logo {
+  float: left;
+  padding-top: 22px;
+}
+
+.site {
+  margin: 0 auto;
+  padding: 0 15px;
+  text-align: left;
+  .page;
+}
+
+#page {
+  background: url("/images/background-white.png") no-repeat scroll 0 0 transparent;
+  margin: -30px 0 0 -25px;
+  padding: 20px 25px 1px;
+  position: relative;
+  .page;
+}
+
+.usingMouse a {
+  outline: medium none;
+}
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+img {
+  border: 0 none;
+}
+
+.field-pair {
+  margin-bottom: 30px;
+  clear: both;
+}
+
+.fieldWithErrors {
+  color: red;
+  padding: 8px;
+  background-color: #ffffcc;
+  border: 1px solid burlywood;
+}
+
+#complexity .field-pair {
+  margin-bottom: 10px;
+}
+
+#complexity .fieldWithErrors {
+  float: left;
+  display: block;
+  width: 20px;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+}

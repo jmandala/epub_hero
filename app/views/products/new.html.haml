@@ -1,2 +1,35 @@
-%h1 Products#new
-%p app/views/products/new.html.erb
+%h1 Create a new title
+
+- form_for @product, :method => :create do |f|
+  = f.error_messages
+
+  #title.field-pair
+    = label_tag :title, 'Title'
+    %br 
+    = f.text_field :title
+
+  #subtitle.field-pair
+    = label_tag :subtitle, 'Subtitle <span class="optional">(optional)</span>'
+    %br 
+    = f.text_field :subtitle
+
+
+  #print-isbn.field-pair
+    = label_tag :print_isbn, 'Derived from print ISBN'
+    %br 
+    = f.text_field :print_isbn
+
+  #eisbn.field-pair
+    = label_tag :eisbn, 'eISBN'
+    %br 
+    = f.text_field :eisbn
+
+  #complexity.fieldset
+    %p How complex is the layout?
+    - Product::COMPLEXITIES::ALL.each do |c|
+      .field-pair
+        = f.radio_button :complexity, c
+        = c
+  
+  .buttons
+    = submit_tag "Save"

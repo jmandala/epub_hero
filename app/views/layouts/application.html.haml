@@ -1,4 +1,16 @@
+!!! 5
 %html
   %head
+    = stylesheet_link_tag "style"
   %body
-    = yield
+    #main
+      #header 
+        .site
+          .logo
+            = link_to(image_tag("header/epub-hero-logo.png"), "/")
+      #content
+        .site
+          #page
+            = yield
+      #footer
+        #copyright &copy; #{Time.now.year} Mandala Designs LLC
