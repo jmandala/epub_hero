@@ -15,6 +15,7 @@ class ProductsController < ApplicationController
 
   def create
     @product ||= Product.new(params[:product])
+    
     if @product.save
       logger.info "CREATE PRODUCT: #{@product.id}"
       flash[:success] = "Created title #{@product.title}"
